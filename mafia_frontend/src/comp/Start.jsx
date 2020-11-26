@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import {NavLink} from "react-router-dom";
 
 let Start = (props) => {
     const [userID, setUserID] = useState("");
@@ -20,7 +21,10 @@ let Start = (props) => {
     return (
         <div>
             <p>Ваш ID: {props.state.USER_ID}</p>
-            <button onClick = {getUserID}>Генерировать идентификатор для игры</button>
+            <NavLink to="/join">
+                <button onClick = {getUserID}>Генерировать идентификатор для игры</button>
+            </NavLink>
+
         </div>
     )
 }

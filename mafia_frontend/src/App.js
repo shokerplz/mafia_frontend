@@ -1,15 +1,22 @@
 import React from 'react';
 import './App.css';
 import Start from "./comp/Start";
-//import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
+import CreateJoin from "./comp/CreateJoin";
 
 const App = (props) => {
       return (
-          //<BrowserRouter>
+          <BrowserRouter>
               <div className="wrapper">
-                  <Start state={props.state} addUserID={props.addUserID}/>
+                  <Route path="/" render={() => <Start state={props.state}
+                                                       addUserID={props.addUserID}/>} />
+
+                  <Route path="/" render={() => <CreateJoin state={props.state}
+                                                            setUsersInRoom={props.setUsersInRoom}
+                                                            setRoomStatus={props.setRoomStatus}/>}
+                                                            setRoomID={props.setRoomID}/>
               </div>
-          //</BrowserRouter>
+          </BrowserRouter>
       )
 }
 export default App;
