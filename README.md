@@ -1,2 +1,2 @@
-# МАФИЯ!!!
-![pic](https://github.com/v4rts/mafia_frontend/raw/main/logo.jpg)
+# mafia_frontend/mafia_frontend -> npm start 
+
