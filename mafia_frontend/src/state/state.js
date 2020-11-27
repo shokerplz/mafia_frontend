@@ -2,7 +2,9 @@
 let state = {
     USER_ID : "",
     UsersInRoom : 2,
-    Room : {},
+    Room : {
+        users:[{id:""}],
+    },
     ROOM_ID : "",
 }
 

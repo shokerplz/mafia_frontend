@@ -1,6 +1,19 @@
 import React from 'react';
+import User from "./User";
 
 let CreateJoin = (props) => {
+
+    let getStatus = () => {
+        setInterval(async e => {
+            let response = await fetch(`http://localhost:5000/status?id=${props.state.USER_ID}`,{method : 'GET'});
+            let RoomStatus = await response.json();
+            if (RoomStatus) {
+                console.log(RoomStatus.users);
+                props.setRoomStatus(RoomStatus);
+            }
+        }, 2000)
+    }
+
 
     let Element = React.createRef( );
 
@@ -21,6 +34,8 @@ let CreateJoin = (props) => {
         if (joinStatus){
             console.log(joinStatus);
             props.setRoomStatus(joinStatus);
+            getStatus();
+
         }
     }
 
@@ -57,6 +72,9 @@ let CreateJoin = (props) => {
                 <textarea ref={Element} onChange={changeHandler} />
 
                 <button onClick = {JoinRoom}>Присоединиться</button>
+
+                <p>Игроки в комнате:</p>
+                {props.state.Room.users.map( (item) => <User user={item}/>)}
             </div>
         )
     }
