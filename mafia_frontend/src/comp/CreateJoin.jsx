@@ -11,7 +11,7 @@ let CreateJoin = (props) => {
                 console.log(RoomStatus.users);
                 props.setRoomStatus(RoomStatus);
             }
-        }, 2000)
+        }, 5000)
     }
 
 
@@ -28,7 +28,7 @@ let CreateJoin = (props) => {
     }
 
     let JoinRoom = async e =>  {
-       let response = await fetch(`http://127.0.0.1:5000/join?id=${ROOM_ID}&user_id=${props.state.USER_ID}`, {method : 'POST'});
+        let response = await fetch(`http://127.0.0.1:5000/join?id=${ROOM_ID}&user_id=${props.state.USER_ID}`, {method : 'POST'});
         let joinStatus = await response.json();
 
         if (joinStatus){
@@ -72,7 +72,7 @@ let CreateJoin = (props) => {
                 <textarea ref={Element} onChange={changeHandler} />
 
                 <button onClick = {JoinRoom}>Присоединиться</button>
-
+                <p>Статус комнаты: {props.state.Room.state}</p>
                 <p>Игроки в комнате:</p>
                 {props.state.Room.users.map( (item) => <User user={item}/>)}
             </div>

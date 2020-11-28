@@ -3,6 +3,7 @@ import './App.css';
 import Start from "./comp/Start";
 import {BrowserRouter, Route} from "react-router-dom";
 import CreateJoin from "./comp/CreateJoin";
+import Room from "./comp/Room";
 
 const App = (props) => {
       return (
@@ -15,6 +16,7 @@ const App = (props) => {
                                                             setUsersInRoom={props.setUsersInRoom}
                                                             setRoomStatus={props.setRoomStatus}/>}
                                                             setRoomID={props.setRoomID}/>
+                  <Route path="/" render={() => <Room state={props.state} />} />
               </div>
           </BrowserRouter>
       )

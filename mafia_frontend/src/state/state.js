@@ -3,7 +3,7 @@ let state = {
     USER_ID : "",
     UsersInRoom : 2,
     Room : {
-        users:[{id:""}],
+        users:[{id:"",ready:"false"}],
     },
     ROOM_ID : "",
 }
