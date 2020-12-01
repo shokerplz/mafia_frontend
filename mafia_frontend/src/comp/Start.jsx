@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import UsersLog from "./UsersLog";
+import styles from './Start.module.css';
 
 let Start = () => {
     const [userID, setUserID] = useState("");
@@ -28,6 +29,7 @@ let Start = () => {
     });
 
     const [roomID, setRoomID] = useState("");
+    const [role, setRole] = useState("");
 
     let Element = React.createRef( );
 
@@ -37,6 +39,8 @@ let Start = () => {
             let RoomStatus = await response.json();
             if (RoomStatus) {
                 setRoom(RoomStatus);
+                getRole(RoomStatus);
+                console.log(RoomStatus);
             }
         }, 1000)
     }
@@ -76,6 +80,7 @@ let Start = () => {
 
     let displayState = () => {
         console.log(room);
+        console.log(userID.toString());
     }
 
     let getReady = async e => {
@@ -83,6 +88,18 @@ let Start = () => {
         let status = await response.json();
         if (status){
             console.log(status);
+        }
+    }
+
+    let getRole = (RoomStatus) => {
+        if (RoomStatus.mafia.includes(userID.toString())){
+            setRole("mafia");
+        }
+        if (RoomStatus.peaceful.includes(userID.toString())) {
+            setRole("peaceful");
+        }
+        if (RoomStatus.killed.includes(userID.toString())){
+            setRole("killed");
         }
     }
 
@@ -115,7 +132,8 @@ let Start = () => {
             <button onClick={getReady}>Ready</button>
             <p>Игроки в комнате: </p>
             {room.users.map( (item) => <UsersLog user={item}/>)}
-
+            <p>Role :  <span className = {styles.role}>{role}</span></p>
+            <p>Статус комнаты: {room.state}</p>
         </div>
     )
 }
