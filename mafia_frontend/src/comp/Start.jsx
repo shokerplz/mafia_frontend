@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import UsersLog from "./UsersLog";
 import styles from './Start.module.css';
+import KillForm from "./KillForm";
+import VoteForm from "./VoteForm";
 
 let Start = () => {
     const [userID, setUserID] = useState("");
@@ -101,6 +103,9 @@ let Start = () => {
         if (RoomStatus.killed.includes(userID.toString())){
             setRole("killed");
         }
+        if (RoomStatus.jailed.includes(userID.toString())){
+            setRole("jailed");
+        }
     }
 
     return (
@@ -134,6 +139,8 @@ let Start = () => {
             {room.users.map( (item) => <UsersLog user={item}/>)}
             <p>Role :  <span className = {styles.role}>{role}</span></p>
             <p>Статус комнаты: {room.state}</p>
+            <KillForm role={role} userID={userID}/>
+            <VoteForm userID={userID}/>
         </div>
     )
 }
