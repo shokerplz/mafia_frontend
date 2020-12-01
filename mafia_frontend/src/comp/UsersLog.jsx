@@ -1,9 +1,8 @@
 import React from 'react';
 
-const User = (props) => {
+let UsersLog = (props) => {
 
-    let readyStatus = "not ready"
-
+    let readyStatus = "not ready";
     if (props.user.ready === "true"){
         readyStatus = "ready";
     }
@@ -17,4 +16,4 @@ const User = (props) => {
     )
 }
 
-export default User;
+export default UsersLog;
