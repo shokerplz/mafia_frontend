@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './Start.module.css';
 
 let UsersLog = (props) => {
     let userStatus = "Ожидание готовности игроков";
@@ -16,7 +15,7 @@ let UsersLog = (props) => {
 
     return(
         <div>
-                <p>Игрок: {props.user.id} - Статус: {userStatus} </p>
+            <p>Игрок: {props.user.id} - Статус: {userStatus} </p>
         </div>
     )
 }
