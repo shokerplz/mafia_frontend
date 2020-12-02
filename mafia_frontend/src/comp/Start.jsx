@@ -7,12 +7,13 @@ import VoteForm from "./VoteForm"
 
 let Start = () => {
     const [userID, setUserID] = useState("");
-    const [usersInRoom, setUsersInRoom] = useState("2");
+    const [usersInRoom, setUsersInRoom] = useState("3");
+    const [condition, setCondition] = useState("1")
     const [room, setRoom] = useState({
         alive : [],
         cicle : "",
         daytime : "",
-        id : 0,
+        id : "",
         jailed : [],
         killed : [],
         mafia :  [],
@@ -62,6 +63,7 @@ let Start = () => {
             console.log(createStatus);
             setRoom(createStatus);
             console.log(room);
+            setRoomID(createStatus.id);
         }
     }
 
@@ -76,13 +78,9 @@ let Start = () => {
         if (joinStatus){
             setRoom(joinStatus);
             console.log(room);
+            setCondition("2")
             StateUpdater();
         }
-    }
-
-    let displayState = () => {
-        console.log(room);
-        console.log(userID.toString());
     }
 
     let getReady = async e => {
@@ -108,42 +106,72 @@ let Start = () => {
         }
     }
 
-    return (
-        <div>
-            <button onClick={displayState}>State</button>
-            <p>Ваш ID: {userID}</p>
-            <button onClick = {getUserID}>Генерировать идентификатор для игры</button>
-            <p>Количество  игроков: {usersInRoom}</p>
-            <select value={usersInRoom} onChange={(event) => setUsersInRoom(event.target.value) }>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-            </select>
+    if (condition === "2"){
+        return (
+            <div className={styles.room__wrapper}>
+                <div className={styles.room__gamelog}>
+                    <p>Текущая комната: {room.id}</p>
+                    <p>Статус комнаты : {room.state}</p>
+                    <p>Ваш ID: {userID}</p>
+                    <p>Максимальное количество  игроков: {usersInRoom}</p>
+                    <p>Роль :  <span className = {styles.role}>{role}</span></p>
+                    <p>Время : {room.daytime}</p>
+                </div>
 
-            <button onClick = {createRoom}>Создать комнату</button>
-            <p>ID созданной комнаты: {room.id}</p>
-            <p>Присоединиться к комнате по ID:</p>
-            <textarea ref={Element} onChange={textareaChangeHandler} />
-            <button onClick = {joinRoom}>Присоединиться</button>
-            <p>Текущая комната: {room.id}</p>
-            <button onClick={getReady}>Ready</button>
-            <p>Игроки в комнате: </p>
-            {room.users.map( (item) => <UsersLog user={item} room={room}/>)}
-            <p>Role :  <span className = {styles.role}>{role}</span></p>
-            <p>Статус комнаты : {room.state}</p>
-            <p>Время : {room.daytime}</p>
-            <KillForm room={room} role={role} userID={userID}/>
-            <VoteForm room={room} userID={userID}/>
-        </div>
-    )
+                <div className={styles.room__userlog}>
+                    <p className={styles.room__userlog__p}>Игроки в комнате: </p>
+                    {room.users.map( (item) => <UsersLog user={item} room={room}/>)}
+                </div>
+
+
+                <button className={styles.room__readybutton} onClick={getReady}>Ready</button>
+                <KillForm room={room} role={role} userID={userID}/>
+                <VoteForm room={room} userID={userID}/>
+            </div>
+        )
+    } else {
+        return (
+            <div className={styles.start__wrapper}>
+                <p>Ваш ID: <span className={styles.start__userid}> {userID} </span></p>
+                <button className={styles.start__genbutton} onClick = {getUserID}>Генерировать идентификатор для игры</button>
+
+                <div className={styles.start__joinform}>
+                    <div className={styles.start__create__wrapper}>
+                        <p>Создать комнату:</p>
+                        <div className={styles.start__joinform}>
+                            <span id={styles.col}>Количество игроков </span>
+                            <select className={styles.start__select} value={usersInRoom} onChange={(event) => setUsersInRoom(event.target.value) }>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                            </select>
+                            <button className={styles.start__createbutton} onClick = {createRoom}>Создать</button>
+                        </div>
+                    </div>
+
+                    <div className={styles.start__join__wrapper}>
+                        <p>Присоединиться к комнате по ID:</p>
+                        <div className={styles.start__joinform}>
+                            <textarea className={styles.start__textarea} value={roomID} ref={Element} onChange={textareaChangeHandler} />
+                            <button className={styles.start__joinbutton} onClick = {joinRoom}>Присоединиться</button>
+                        </div>
+                    </div>
+                </div>
+                <p className={styles.unvisible}>{room.id}</p>
+                <p className={styles.unvisible}>{usersInRoom}</p>
+            </div>
+        )
+    }
 }
 
 export default Start;

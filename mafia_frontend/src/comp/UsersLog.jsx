@@ -16,9 +16,7 @@ let UsersLog = (props) => {
 
     return(
         <div>
-
                 <p>Игрок: {props.user.id} - Статус: {userStatus} </p>
-
         </div>
     )
 }

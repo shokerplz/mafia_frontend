@@ -1,4 +1,227 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
 .role{
-    font-size: 35px;
-    color: red;
+    font-size: 18px;
+    color: lightcoral;
+}
+
+.start__userid{
+    font-size: 30px;
+    color: lightcoral;
+}
+
+.start__wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+}
+
+.start__create__wrapper{
+    display: flex;
+    border: 1px solid #9a9a9a;
+    width: 360px;
+    border-radius: 10px;
+    margin: 10px;
+    align-items: center;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.start__join__wrapper{
+    display: flex;
+    border: 1px solid #9a9a9a;
+    width: 360px;
+    border-radius: 10px;
+    margin: 10px;
+    align-items: center;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.start__createjoin{
+    display: flex;
+    width: 900px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.start__textarea{
+    width: 160px;
+    height: 27px;
+    outline: none;
+    font-size: 20px;
+    align-items: center;
+    resize: none;
+}
+
+.start__joinbutton{
+    border: none;
+    outline: none;
+    height: 27px;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.start__joinbutton:hover{
+    background: lightcoral;
+    transition: background 0.3s;
+}
+
+.start__joinform{
+    display:flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.start__genbutton{
+    border: none;
+    outline: none;
+    height: 27px;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    align-items: center;
+    margin: 25px;
+}
+
+.start__genbutton:hover{
+    background: lightcoral;
+    transition: background 0.3s;
+}
+
+.start__createbutton{
+    border: none;
+    outline: none;
+    height: 27px;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.start__select{
+    appearance: none;
+    outline : none;
+    border-radius: 0;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    height: 27px;
+    width: 35px;
+    font-size: 20px;
+}
+
+.start__createbutton:hover{
+    background: lightcoral;
+    transition: background 0.3s;
+}
+
+.room__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.room__userlog{
+    padding: 10px;
+    border: 1px solid #9a9a9a;
+    border-radius: 10px;
+    width: 450px;
+    margin-bottom: 25px;
+}
+
+.room__gamelog{
+    padding: 10px;
+    border: 1px solid #9a9a9a;
+    border-radius: 10px;
+    width: 450px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.room__userlog__p{
+    margin-bottom: 5px;
+}
+
+.room__readybutton{
+    border: none;
+    outline: none;
+    height: 27px;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.room__readybutton:hover{
+    background: lightcoral;
+    transition: background 0.3s;
+}
+
+.voteform__button{
+    border: none;
+    outline: none;
+    height: 27px;
+    color: white;
+    background: black;
+    font-size: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.voteform__button:hover{
+    background: lightcoral;
+    transition: background 0.3s;
+}
+
+.killspan{
+    color: lightcoral;
+}
+
+.voteform__textarea{
+    width: 160px;
+    height: 27px;
+    outline: none;
+    font-size: 18px;
+    align-items: center;
+    resize: none;
+}
+
+.voteform__voteform{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display:flex;
+    align-items: center;
+}
+
+
+.unvisible{
+    visibility: hidden;
+}
+
+#col{
+    margin-right: 10px;
 }

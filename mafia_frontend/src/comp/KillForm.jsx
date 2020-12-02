@@ -21,12 +21,14 @@ let KillForm = (props) => {
         }
     }
 
-    if (props.role === "mafia" && props.room.daytime === "night" && props.room.cicle === 2){
+    if (props.role === "mafia" && props.room.daytime === "night" && props.room.cicle === 2 && props.room.alive.includes(props.userID.toString())){
         return(
             <div>
-                <p>Для мафии:</p>
-                <textarea ref={Element2} onChange={killTextareaChangeHandler} />
-                <button onClick={killButton}>Vote to kill</button>
+                <p>Голосование за <span className={styles.killspan}>убийство</span></p>
+                <div className={styles.voteform__voteform}>
+                    <textarea placeholder="Введите ID" className={styles.voteform__textarea} ref={Element2} onChange={killTextareaChangeHandler} />
+                    <button className={styles.voteform__button} onClick={killButton}>Проголосовать за убийство</button>
+                </div>
             </div>
         )
     }else{

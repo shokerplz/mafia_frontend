@@ -4,7 +4,7 @@ import Start from "./comp/Start";
 
 const App = (props) => {
       return (
-          <div className="wrapper">
+          <div>
               <Start />
           </div>
       )

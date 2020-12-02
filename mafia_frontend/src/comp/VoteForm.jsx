@@ -19,12 +19,14 @@ let KillForm = (props) => {
         setTargetVote(txta);
     }
 
-    if (props.room.daytime === "day") {
+    if (props.room.daytime === "day" && props.room.state === "vote" && props.room.alive.includes(props.userID.toString())) {
         return (
             <div>
-                <p>ГОЛОСОВАНИЕ</p>
-                <textarea ref={Element3} onChange={voteTextareaChangeHandler}/>
-                <button onClick={voteButton}>otpravit' v tyur'mu</button>
+                <p>Голосование</p>
+                <div className={styles.voteform__voteform}>
+                    <textarea placeholder="Введите ID" className={styles.voteform__textarea} ref={Element3} onChange={voteTextareaChangeHandler}/>
+                    <button className={styles.voteform__button} onClick={voteButton}>Проголосовать</button>
+                </div>
             </div>
         )
     } else {
