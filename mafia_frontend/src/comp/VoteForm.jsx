@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from './Start.module.css';
 
 let KillForm = (props) => {
 
@@ -18,13 +19,21 @@ let KillForm = (props) => {
         setTargetVote(txta);
     }
 
-    return(
-        <div>
-            <p>ГОЛОСОВАНИЕ</p>
-            <textarea ref={Element3} onChange={voteTextareaChangeHandler} />
-            <button onClick={voteButton}>Vote to otpravlyaites' v tyur'mu</button>
-        </div>
-    )
+    if (props.room.daytime === "day") {
+        return (
+            <div>
+                <p>ГОЛОСОВАНИЕ</p>
+                <textarea ref={Element3} onChange={voteTextareaChangeHandler}/>
+                <button onClick={voteButton}>otpravit' v tyur'mu</button>
+            </div>
+        )
+    } else {
+        return(
+            <div>
+
+            </div>
+        )
+    }
 }
 
 export default KillForm;

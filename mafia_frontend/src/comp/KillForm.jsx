@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import styles from './Start.module.css';
 
 let KillForm = (props) => {
 
@@ -20,7 +21,7 @@ let KillForm = (props) => {
         }
     }
 
-    if (props.role === "mafia"){
+    if (props.role === "mafia" && props.room.daytime === "night" && props.room.cicle === 2){
         return(
             <div>
                 <p>Для мафии:</p>

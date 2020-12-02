@@ -3,7 +3,7 @@ import { useState } from 'react';
 import UsersLog from "./UsersLog";
 import styles from './Start.module.css';
 import KillForm from "./KillForm";
-import VoteForm from "./VoteForm";
+import VoteForm from "./VoteForm"
 
 let Start = () => {
     const [userID, setUserID] = useState("");
@@ -136,11 +136,12 @@ let Start = () => {
             <p>Текущая комната: {room.id}</p>
             <button onClick={getReady}>Ready</button>
             <p>Игроки в комнате: </p>
-            {room.users.map( (item) => <UsersLog user={item}/>)}
+            {room.users.map( (item) => <UsersLog user={item} room={room}/>)}
             <p>Role :  <span className = {styles.role}>{role}</span></p>
-            <p>Статус комнаты: {room.state}</p>
-            <KillForm role={role} userID={userID}/>
-            <VoteForm userID={userID}/>
+            <p>Статус комнаты : {room.state}</p>
+            <p>Время : {room.daytime}</p>
+            <KillForm room={room} role={role} userID={userID}/>
+            <VoteForm room={room} userID={userID}/>
         </div>
     )
 }

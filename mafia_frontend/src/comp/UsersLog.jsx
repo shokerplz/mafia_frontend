@@ -1,17 +1,24 @@
 import React from 'react';
+import styles from './Start.module.css';
 
 let UsersLog = (props) => {
+    let userStatus = "Ожидание готовности игроков";
 
-    let readyStatus = "not ready";
-    if (props.user.ready === "true"){
-        readyStatus = "ready";
+    if (props.room.mafia.includes(props.user.id.toString()) || props.room.peaceful.includes(props.user.id.toString())) {
+        userStatus = "Жив";
+    }
+    if (props.room.killed.includes(props.user.id.toString())) {
+        userStatus = "Мертв";
+    }
+    if (props.room.jailed.includes(props.user.id.toString())) {
+        userStatus = "В тюрьме"
     }
 
     return(
         <div>
-            <ui>
-                <li>Игрок: {props.user.id} status: {readyStatus}</li>
-            </ui>
+
+                <p>Игрок: {props.user.id} - Статус: {userStatus} </p>
+
         </div>
     )
 }
