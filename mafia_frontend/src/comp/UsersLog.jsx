@@ -1,8 +1,13 @@
 import React from 'react';
+import styles from './Start.module.css';
 
 let UsersLog = (props) => {
-    let userStatus = "Ожидание готовности игроков";
+    let userStatus = "Ожидание готовности";
 
+
+    if (props.user.ready === "true" && props.room.mafia.length === 0){
+        userStatus = "Готов";
+    }
     if (props.room.mafia.includes(props.user.id.toString()) || props.room.peaceful.includes(props.user.id.toString())) {
         userStatus = "Жив";
     }
@@ -13,9 +18,10 @@ let UsersLog = (props) => {
         userStatus = "В тюрьме"
     }
 
+
     return(
-        <div>
-            <p>Игрок: {props.user.id} - Статус: {userStatus} </p>
+        <div className={styles.margin}>
+            <p>Игрок: <span className={styles.id}>{props.user.id}</span> - Статус: {userStatus} </p>
         </div>
     )
 }

@@ -36,6 +36,8 @@ let Start = () => {
 
     let Element = React.createRef( );
 
+
+
     let StateUpdater = () => {
         setInterval(async e => {
             let response = await fetch(`http://localhost:5000/status?id=${userID}`,{method : 'GET'});
@@ -49,9 +51,9 @@ let Start = () => {
     }
 
     let getUserID = async e => {
-        let response = await fetch('http://127.0.0.1:5000/get-user-id', {method : 'POST'})
+        let response = await fetch('http://127.0.0.1:5000/get-user-id', {method: 'POST'})
         let ID = await response.json();
-        if (ID){
+        if (ID) {
             setUserID(ID.USER_ID);
         }
     }
