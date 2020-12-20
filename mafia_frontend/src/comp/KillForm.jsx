@@ -3,10 +3,11 @@ import styles from './Start.module.css';
 
 let KillForm = (props) => {
 
+
     let Element2 = React.createRef( );
 
+    let [textareaLog, setTextareaLog] = useState("")
     const [targetUser, setTargetUser] = useState("");
-
 
     let killTextareaChangeHandler = () => {
         let txt = Element2.current.value;
@@ -14,10 +15,18 @@ let KillForm = (props) => {
     }
 
     let killButton = async e => {
-        let response = await fetch(`http://127.0.0.1:5000/action?action=kill&user_id=${props.userID}&target_id=${targetUser}`,{method : 'POST'});
-        let KillStatus = await response.json();
-        if (KillStatus){
-            console.log(KillStatus);
+        let flag = false;
+        props.room.alive.forEach(user => {if (user === targetUser){flag = true}})
+        if (flag) {
+            let response = await fetch(`http://127.0.0.1:5000/action?action=kill&user_id=${props.userID}&target_id=${targetUser}`, {method: 'POST'});
+            let KillStatus = await response.json();
+            if (KillStatus) {
+                console.log(KillStatus);
+                setTextareaLog("Успешно!");
+            }
+
+        }else {
+            setTextareaLog("Этого пользователя не существует или нет в списке живых, введите корректный ID");
         }
     }
 
@@ -28,7 +37,9 @@ let KillForm = (props) => {
                 <div className={styles.voteform__voteform}>
                     <textarea placeholder="Введите ID" className={styles.voteform__textarea} ref={Element2} onChange={killTextareaChangeHandler} />
                     <button className={styles.voteform__button} onClick={killButton}>Проголосовать за убийство</button>
+
                 </div>
+                <p>{textareaLog}</p>
             </div>
         )
     }else{
