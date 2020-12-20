@@ -7,6 +7,7 @@ let KillForm = (props) => {
     let Element2 = React.createRef( );
 
     let [textareaLog, setTextareaLog] = useState("")
+    let [textareaLog2, setTextareaLog2] = useState("")
     const [targetUser, setTargetUser] = useState("");
 
     let killTextareaChangeHandler = () => {
@@ -26,7 +27,7 @@ let KillForm = (props) => {
             }
 
         }else {
-            setTextareaLog("Этого пользователя не существует или нет в списке живых, введите корректный ID");
+            setTextareaLog2("Некорректный ID");
         }
     }
 
@@ -36,10 +37,11 @@ let KillForm = (props) => {
                 <p>Голосование за <span className={styles.killspan}>убийство</span></p>
                 <div className={styles.voteform__voteform}>
                     <textarea placeholder="Введите ID" className={styles.voteform__textarea} ref={Element2} onChange={killTextareaChangeHandler} />
-                    <button className={styles.voteform__button} onClick={killButton}>Проголосовать за убийство</button>
+                    <button className={styles.voteform__button} onClick={killButton}>Проголосовать</button>
 
                 </div>
-                <p>{textareaLog}</p>
+                <p className={styles.green}>{textareaLog}</p>
+                <p className={styles.red}>{textareaLog2}</p>
             </div>
         )
     }else{

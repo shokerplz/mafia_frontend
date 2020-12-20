@@ -258,6 +258,13 @@
     align-items: center;
 }
 
+.red{
+    color: #d96262;
+}
+
+.green{
+    color: #4ed64e;
+}
 
 .unvisible{
     visibility: hidden;
@@ -265,4 +272,15 @@
 
 #col{
     margin-right: 10px;
+}
+
+@media screen and (max-width: 600px){
+    .room__gamelog{
+        width: 350px;
+        transition: width 1s;
+    }
+    .room__userlog{
+        width: 350px;
+        transition: width 1s;
+    }
 }

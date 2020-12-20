@@ -3,6 +3,7 @@ import styles from './Start.module.css';
 
 let KillForm = (props) => {
     let [textareaLog, setTextareaLog] = useState("")
+    let [textareaLog2, setTextareaLog2] = useState("")
     const [targetVote, setTargetVote] = useState("");
     let Element3 = React.createRef();
 
@@ -15,9 +16,10 @@ let KillForm = (props) => {
             if (VoteStatus) {
                 console.log(VoteStatus);
                 setTextareaLog("Успешно!");
+                setTextareaLog2("");
             }
         }else{
-            setTextareaLog("Этого пользователя не существует или нет в списке живых, введите корректный ID");
+            setTextareaLog2("Некорректный ID");
         }
     }
 
@@ -34,7 +36,8 @@ let KillForm = (props) => {
                     <textarea placeholder="Введите ID" className={styles.voteform__textarea} ref={Element3} onChange={voteTextareaChangeHandler}/>
                     <button className={styles.voteform__button} onClick={voteButton}>Проголосовать</button>
                 </div>
-                <p>{textareaLog}</p>
+                <p className={styles.green}>{textareaLog}</p>
+                <p className={styles.red}>{textareaLog2}</p>
             </div>
         )
     } else {
