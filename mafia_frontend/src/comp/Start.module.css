@@ -283,4 +283,12 @@
         width: 350px;
         transition: width 1s;
     }
+    .room__readybutton{
+        width: 350px;
+        height: 40px;
+    }
+    .start__genbutton{
+        height: 50px;
+
+    }
 }
