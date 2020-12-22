@@ -174,8 +174,8 @@
     padding: 10px;
     border: 1px solid #9a9a9a;
     border-radius: 10px;
-    width: 450px;
     margin-bottom: 25px;
+    width: 450px;
 }
 
 .id{
@@ -192,9 +192,13 @@
     padding: 10px;
     border: 1px solid #9a9a9a;
     border-radius: 10px;
-    width: 450px;
     margin-bottom: 25px;
     margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 160px;
+    width: 450px;
 }
 
 .room__userlog__p{

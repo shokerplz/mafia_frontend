@@ -45,7 +45,7 @@ let Start = () => {
             if (RoomStatus) {
                 setRoom(RoomStatus);
                 getRole(RoomStatus);
-                console.log(RoomStatus);
+                /*console.log(RoomStatus);*/
             }
         }, 1000)
     }
@@ -62,9 +62,9 @@ let Start = () => {
         let response = await fetch(`http://127.0.0.1:5000/create?users=${usersInRoom}&user_id=${userID}`, {method : 'POST'})
         let createStatus = await response.json();
         if (createStatus){
-            console.log(createStatus);
+            /*console.log(createStatus);*/
             setRoom(createStatus);
-            console.log(room);
+            /*console.log(room);*/
             setRoomID(createStatus.id);
         }
     }
@@ -79,7 +79,7 @@ let Start = () => {
         let joinStatus = await response.json();
         if (joinStatus){
             setRoom(joinStatus);
-            console.log(room);
+            /*console.log(room);*/
             setCondition("2")
             StateUpdater();
         }
