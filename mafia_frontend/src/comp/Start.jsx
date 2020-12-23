@@ -112,9 +112,9 @@ let Start = () => {
         return (
             <div className={styles.room__wrapper}>
                 <div className={styles.room__gamelog}>
+                    <p>Ваш ID: {userID}</p>
                     <p>Текущая комната: {room.id}</p>
                     <p>Статус комнаты : {room.state}</p>
-                    <p>Ваш ID: {userID}</p>
                     <p>Максимальное количество  игроков: {usersInRoom}</p>
                     <p>Роль :  <span className = {styles.role}>{role}</span></p>
                     <p>Время : {room.daytime}</p>
