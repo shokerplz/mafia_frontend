@@ -5,6 +5,8 @@ import styles from './Start.module.css';
 import KillForm from "./KillForm";
 import VoteForm from "./VoteForm"
 
+let flagUID = false;
+
 let Start = () => {
     const [userID, setUserID] = useState("");
     const [usersInRoom, setUsersInRoom] = useState("3");
@@ -38,6 +40,7 @@ let Start = () => {
 
 
 
+
     let StateUpdater = () => {
         setInterval(async e => {
             let response = await fetch(`http://localhost:5000/status?id=${userID}`,{method : 'GET'});
@@ -57,6 +60,12 @@ let Start = () => {
             setUserID(ID.USER_ID);
         }
     }
+
+    if (!flagUID){
+        getUserID();
+        flagUID = true;
+    }
+
 
     let createRoom = async e => {
         let response = await fetch(`http://127.0.0.1:5000/create?users=${usersInRoom}&user_id=${userID}`, {method : 'POST'})
