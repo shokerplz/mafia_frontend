@@ -17,9 +17,9 @@ let KillForm = (props) => {
 
     let killButton = async e => {
         let flag = false;
-        props.room.alive.forEach(user => {if (user === targetUser){flag = true}})
+        props.room.alive.forEach(user => {if (user.toString() === targetUser){flag = true}})
         if (flag) {
-            let response = await fetch(`http://127.0.0.1:5000/action?action=kill&user_id=${props.userID}&target_id=${targetUser}`, {method: 'POST'});
+            let response = await fetch(`http://127.0.0.1:5000/action?action=kill&user_id=${props.userID.toString()}&target_id=${targetUser}`, {method: 'POST'});
             let KillStatus = await response.json();
             if (KillStatus) {
                 console.log(KillStatus);
@@ -31,7 +31,7 @@ let KillForm = (props) => {
         }
     }
 
-    if (props.role === "mafia" && props.room.daytime === "night" && props.room.cicle === 2 && props.room.alive.includes(props.userID.toString())){
+    if (props.role === "mafia" && props.room.daytime === "night" && props.room.cicle === 2 && props.room.alive.includes(props.userID)){
         return(
             <div>
                 <p>Голосование за <span className={styles.killspan}>убийство</span></p>

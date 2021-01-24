@@ -9,9 +9,10 @@ let KillForm = (props) => {
 
     let voteButton = async e => {
         let flag = false;
-        props.room.alive.forEach(user => {if (user === targetVote){flag = true}})
+        props.room.alive.forEach(user => {if (user.toString() === targetVote){flag = true}})
         if (flag) {
-            let response = await fetch(`http://127.0.0.1:5000/action?action=vote&user_id=${props.userID}&target_id=${targetVote}`, {method: 'POST'});
+		console.log("userID: "+props.userID.toString())
+            let response = await fetch(`http://127.0.0.1:5000/action?action=vote&user_id=${props.userID.toString()}&target_id=${targetVote}`, {method: 'POST'});
             let VoteStatus = await response.json();
             if (VoteStatus) {
                 console.log(VoteStatus);
@@ -28,7 +29,7 @@ let KillForm = (props) => {
         setTargetVote(txta);
     }
 
-    if (props.room.daytime === "day" && props.room.state === "vote" && props.room.alive.includes(props.userID.toString())) {
+    if (props.room.daytime === "day" && props.room.state === "vote" && props.room.alive.includes(props.userID)) {
         return (
             <div>
                 <p>Голосование</p>

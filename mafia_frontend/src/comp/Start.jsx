@@ -15,17 +15,17 @@ let Start = () => {
         alive : [],
         cicle : "",
         daytime : "",
-        id : "",
+        id : 0,
         jailed : [],
         killed : [],
         mafia :  [],
-        max_users : "",
+        max_users : 0,
         peaceful : [],
         state : "",
         users : [{
             alive : "",
-            id : "",
-            ready : "",
+            id : 0,
+            ready : false,
             role : "",
             votes_against: 0
         }],
@@ -103,16 +103,16 @@ let Start = () => {
     }
 
     let getRole = (RoomStatus) => {
-        if (RoomStatus.mafia.includes(userID.toString())){
+        if (RoomStatus.mafia.includes(userID)){
             setRole("mafia");
         }
-        if (RoomStatus.peaceful.includes(userID.toString())) {
+        if (RoomStatus.peaceful.includes(userID)) {
             setRole("peaceful");
         }
-        if (RoomStatus.killed.includes(userID.toString())){
+        if (RoomStatus.killed.includes(userID)){
             setRole("killed");
         }
-        if (RoomStatus.jailed.includes(userID.toString())){
+        if (RoomStatus.jailed.includes(userID)){
             setRole("jailed");
         }
     }

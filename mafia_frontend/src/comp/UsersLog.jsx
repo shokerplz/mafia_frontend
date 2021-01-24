@@ -3,18 +3,18 @@ import styles from './Start.module.css';
 
 let UsersLog = (props) => {
     let userStatus = "Ожидание готовности";
+	console.log(props.room)
 
-
-    if (props.user.ready === "true" && props.room.mafia.length === 0){
+    if (props.user.ready === true && props.room.mafia.length === 0){
         userStatus = "Готов";
     }
-    if (props.room.mafia.includes(props.user.id.toString()) || props.room.peaceful.includes(props.user.id.toString())) {
+    if (props.room.mafia.includes(props.user.id) || props.room.peaceful.includes(props.user.id)) {
         userStatus = "Жив";
     }
-    if (props.room.killed.includes(props.user.id.toString())) {
+    if (props.room.killed.includes(props.user.id)) {
         userStatus = "Мертв";
     }
-    if (props.room.jailed.includes(props.user.id.toString())) {
+    if (props.room.jailed.includes(props.user.id)) {
         userStatus = "В тюрьме"
     }
 
